@@ -26,17 +26,31 @@ const Hero = () => {
       canvas.height = window.innerHeight;
     };
 
-    const createParticle = () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      speed: 2 + Math.random() * 4,
-      length: 50 + Math.random() * 150,
-      opacity: 0.1 + Math.random() * 0.4,
-    });
+    const createParticle = (fullRandom = true) => {
+      if (fullRandom) {
+        // Distribute across entire canvas
+        return {
+          x: Math.random() * canvas.width * 1.5 - canvas.width * 0.25,
+          y: Math.random() * canvas.height * 1.5,
+          speed: 1 + Math.random() * 3,
+          length: 30 + Math.random() * 120,
+          opacity: 0.05 + Math.random() * 0.3,
+        };
+      }
+      // Reset particle to start from left/bottom edge
+      return {
+        x: -Math.random() * 200,
+        y: canvas.height + Math.random() * 300,
+        speed: 1 + Math.random() * 3,
+        length: 30 + Math.random() * 120,
+        opacity: 0.05 + Math.random() * 0.3,
+      };
+    };
 
     const init = () => {
       resize();
-      particles = Array.from({ length: 60 }, createParticle);
+      // Many more particles for full coverage
+      particles = Array.from({ length: 150 }, () => createParticle(true));
     };
 
     const animate = () => {
@@ -69,13 +83,9 @@ const Hero = () => {
         particle.x += particle.speed;
         particle.y -= particle.speed * 0.3;
 
-        // Reset if off screen
+        // Reset if off screen - spawn from left/bottom edge
         if (particle.x > canvas.width + particle.length || particle.y < -particle.length) {
-          particles[index] = {
-            ...createParticle(),
-            x: -particle.length,
-            y: canvas.height + Math.random() * 200,
-          };
+          particles[index] = createParticle(false);
         }
       });
 
