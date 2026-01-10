@@ -1,25 +1,111 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const Hero = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animationId: number;
+    let particles: Array<{
+      x: number;
+      y: number;
+      speed: number;
+      length: number;
+      opacity: number;
+    }> = [];
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    const createParticle = () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      speed: 2 + Math.random() * 4,
+      length: 50 + Math.random() * 150,
+      opacity: 0.1 + Math.random() * 0.4,
+    });
+
+    const init = () => {
+      resize();
+      particles = Array.from({ length: 60 }, createParticle);
+    };
+
+    const animate = () => {
+      ctx.fillStyle = "rgba(14, 51, 134, 0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((particle, index) => {
+        // Create gradient for each line
+        const gradient = ctx.createLinearGradient(
+          particle.x,
+          particle.y,
+          particle.x + particle.length,
+          particle.y - particle.length * 0.3
+        );
+        gradient.addColorStop(0, `rgba(45, 212, 191, 0)`);
+        gradient.addColorStop(0.5, `rgba(45, 212, 191, ${particle.opacity})`);
+        gradient.addColorStop(1, `rgba(139, 92, 246, ${particle.opacity * 0.5})`);
+
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(particle.x, particle.y);
+        ctx.lineTo(
+          particle.x + particle.length,
+          particle.y - particle.length * 0.3
+        );
+        ctx.stroke();
+
+        // Move particle diagonally (simulating speed/motion)
+        particle.x += particle.speed;
+        particle.y -= particle.speed * 0.3;
+
+        // Reset if off screen
+        if (particle.x > canvas.width + particle.length || particle.y < -particle.length) {
+          particles[index] = {
+            ...createParticle(),
+            x: -particle.length,
+            y: canvas.height + Math.random() * 200,
+          };
+        }
+      });
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    init();
+    animate();
+    window.addEventListener("resize", resize);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-background">
-        {/* Gradient Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse delay-1000" />
+      {/* Animated Speed Lines Canvas */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 z-0"
+        style={{ background: "hsl(var(--background))" }}
+      />
+
+      {/* Gradient Orbs for depth */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/15 rounded-full blur-3xl animate-pulse delay-1000" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[hsl(var(--purple))]/10 rounded-full blur-3xl" />
-        
-        {/* Grid Pattern */}
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `linear-gradient(hsl(var(--border)) 1px, transparent 1px),
-                             linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px'
-          }}
-        />
       </div>
 
       {/* Content */}
