@@ -60,7 +60,7 @@ const StatsBanner = () => {
           </div>
           <div className="flex flex-col gap-2">
             <p className="text-xl md:text-2xl text-foreground font-medium">
-              Daily automated actions powered by BMC
+              Daily automated actions powered by SMARTFLOW
             </p>
             <p className="text-muted-foreground">
               Transforming enterprises worldwide with AI-driven automation

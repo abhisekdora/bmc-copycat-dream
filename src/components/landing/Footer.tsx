@@ -2,7 +2,7 @@ import { Linkedin, Twitter, Youtube, Facebook } from "lucide-react";
 
 const footerLinks = {
   Solutions: ["Workflow Orchestration", "Mainframe", "Cloud Operations", "Security & Compliance"],
-  Products: ["BMC Helix", "Control-M", "AMI", "MainView"],
+  Products: ["SMARTFLOW Helix", "Control-M", "AMI", "MainView"],
   Company: ["About Us", "Careers", "Newsroom", "Investor Relations"],
   Resources: ["Blog", "Events", "Webinars", "Case Studies"],
   Support: ["Documentation", "Community", "Contact Support", "Training"],
@@ -18,12 +18,12 @@ const Footer = () => {
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <a href="#" className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-lg gradient-border flex items-center justify-center">
-                <span className="text-background font-bold text-xl">B</span>
+                <span className="text-background font-bold text-xl">S</span>
               </div>
-              <span className="text-xl font-bold text-foreground">BMC</span>
+              <span className="text-xl font-bold text-foreground">SMARTFLOW</span>
             </a>
             <p className="text-muted-foreground text-sm mb-6">
-              Business runs on software. Software runs on BMC.
+              Business runs on software. Software runs on SMARTFLOW.
             </p>
             <div className="flex gap-4">
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
@@ -64,7 +64,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 BMC Software, Inc. All rights reserved.
+            © 2024 SMARTFLOW Software, Inc. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
