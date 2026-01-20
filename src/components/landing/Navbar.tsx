@@ -18,7 +18,7 @@ const Navbar = () => {
       {/* Announcement Bar */}
       <div className="bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 py-2 px-4 text-center text-sm">
         <span className="text-foreground/90">
-          Looking for BMC Helix?{" "}
+          Looking for SMARTFLOW Helix?{" "}
           <a href="#" className="text-primary hover:underline font-medium">
             See what's new →
           </a>
@@ -32,9 +32,9 @@ const Navbar = () => {
             {/* Logo */}
             <a href="#" className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-lg gradient-border flex items-center justify-center">
-                <span className="text-background font-bold text-xl">B</span>
+                <span className="text-background font-bold text-xl">S</span>
               </div>
-              <span className="text-xl font-bold text-foreground">BMC</span>
+              <span className="text-xl font-bold text-foreground">SMARTFLOW</span>
             </a>
 
             {/* Desktop Nav */}

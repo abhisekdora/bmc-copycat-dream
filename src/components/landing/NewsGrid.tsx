@@ -4,7 +4,7 @@ const news = [
   {
     category: "Award Spotlight",
     categoryColor: "primary",
-    title: "BMC Named Leader in ESM for 11th Consecutive Year",
+    title: "SMARTFLOW Named Leader in ESM for 11th Consecutive Year",
     description: "Gartner recognizes our commitment to innovation and customer success in enterprise service management.",
     image: "gradient-1",
     link: "#",

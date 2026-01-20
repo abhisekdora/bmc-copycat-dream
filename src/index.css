@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* BMC-inspired dark enterprise design system */
+/* SMARTFLOW-inspired dark enterprise design system */
 
 @layer base {
   :root {
@@ -36,7 +36,7 @@
 
     --radius: 0.5rem;
 
-    /* Custom BMC colors */
+    /* Custom SMARTFLOW colors */
     --teal: 174 72% 45%;
     --teal-glow: 174 72% 55%;
     --orange: 25 95% 55%;
