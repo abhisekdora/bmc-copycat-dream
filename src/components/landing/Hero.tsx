@@ -2,6 +2,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 
+const logos = [
+  "Microsoft", "Google", "Amazon", "Apple", "Meta", 
+  "Netflix", "Salesforce", "Oracle", "SAP", "IBM",
+  "Adobe", "Cisco", "Dell", "HP", "Intel",
+];
+
 const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -22,13 +28,12 @@ const Hero = () => {
     }> = [];
 
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
     };
 
     const createParticle = (fullRandom = true) => {
       if (fullRandom) {
-        // Distribute across entire canvas
         return {
           x: Math.random() * canvas.width * 1.5 - canvas.width * 0.25,
           y: Math.random() * canvas.height * 1.5,
@@ -37,7 +42,6 @@ const Hero = () => {
           opacity: 0.05 + Math.random() * 0.3,
         };
       }
-      // Reset particle to start from left/bottom edge
       return {
         x: -Math.random() * 200,
         y: canvas.height + Math.random() * 300,
@@ -49,7 +53,6 @@ const Hero = () => {
 
     const init = () => {
       resize();
-      // Many more particles for full coverage
       particles = Array.from({ length: 150 }, () => createParticle(true));
     };
 
@@ -58,7 +61,6 @@ const Hero = () => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((particle, index) => {
-        // Create gradient for each line
         const gradient = ctx.createLinearGradient(
           particle.x,
           particle.y,
@@ -79,11 +81,9 @@ const Hero = () => {
         );
         ctx.stroke();
 
-        // Move particle diagonally (simulating speed/motion)
         particle.x += particle.speed;
         particle.y -= particle.speed * 0.3;
 
-        // Reset if off screen - spawn from left/bottom edge
         if (particle.x > canvas.width + particle.length || particle.y < -particle.length) {
           particles[index] = createParticle(false);
         }
@@ -103,60 +103,111 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
-      {/* Animated Speed Lines Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-0"
-        style={{ background: "hsl(var(--background))" }}
-      />
+    <section className="relative min-h-screen flex pt-24">
+      {/* Left Side - 70% with Animation */}
+      <div className="relative w-full lg:w-[70%] flex items-center justify-center overflow-hidden">
+        {/* Animated Speed Lines Canvas */}
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 z-0 w-full h-full"
+          style={{ background: "hsl(var(--background))" }}
+        />
 
-      {/* Gradient Orbs for depth */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/15 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[hsl(var(--purple))]/10 rounded-full blur-3xl" />
-      </div>
+        {/* Gradient Orbs for depth */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/15 rounded-full blur-3xl animate-pulse delay-1000" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[hsl(var(--purple))]/10 rounded-full blur-3xl" />
+        </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="text-foreground">Business,</span>
-            <br />
-            <span className="gradient-text">faster than</span>
-            <br />
-            <span className="text-foreground">humanly possible</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-            AI and automation solutions that transform your enterprise operations
-            and drive unprecedented efficiency
-          </p>
+        {/* Content */}
+        <div className="container px-4 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              <span className="text-foreground">Business,</span>
+              <br />
+              <span className="gradient-text">faster than</span>
+              <br />
+              <span className="text-foreground">humanly possible</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
+              AI and automation solutions that transform your enterprise operations
+              and drive unprecedented efficiency
+            </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 glow-teal"
-            >
-              Contact Us
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="text-lg px-8 py-6 border-border hover:bg-secondary"
-            >
-              Watch Demo
-            </Button>
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 glow-teal"
+              >
+                Contact Us
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="text-lg px-8 py-6 border-border hover:bg-secondary"
+              >
+                Watch Demo
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator - visible on mobile */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce lg:hidden">
+          <div className="w-6 h-10 border-2 border-muted-foreground/50 rounded-full flex items-start justify-center p-1">
+            <div className="w-1.5 h-2.5 bg-muted-foreground/50 rounded-full" />
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-muted-foreground/50 rounded-full flex items-start justify-center p-1">
-          <div className="w-1.5 h-2.5 bg-muted-foreground/50 rounded-full" />
+      {/* Right Side - 30% Trusted Partners */}
+      <div className="hidden lg:flex w-[30%] bg-card/50 border-l border-border flex-col justify-center overflow-hidden">
+        <div className="px-6 py-8">
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+            Trusted Partner
+          </div>
+          <h3 className="text-2xl font-bold text-foreground mb-2">
+            AI engine for
+          </h3>
+          <p className="gradient-text text-xl font-bold mb-4">
+            ~80% of Forbes Global 100
+          </p>
+          <p className="text-muted-foreground text-sm mb-6">
+            Leading enterprises worldwide trust our platform
+          </p>
+        </div>
+
+        {/* Vertical Scrolling Logos */}
+        <div className="relative flex-1 overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-card/50 to-transparent z-10" />
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-card/50 to-transparent z-10" />
+          
+          <div className="animate-scroll-vertical">
+            {[...logos, ...logos].map((logo, index) => (
+              <div
+                key={index}
+                className="mx-4 my-3 h-14 bg-card rounded-lg border border-border flex items-center justify-center hover:border-primary/50 transition-colors"
+              >
+                <span className="text-muted-foreground font-semibold text-sm">
+                  {logo}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="px-6 py-4 border-t border-border">
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 text-sm font-medium transition-colors"
+          >
+            Explore customer stories
+            <span>→</span>
+          </a>
         </div>
       </div>
     </section>
