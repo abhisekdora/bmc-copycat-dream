@@ -156,48 +156,51 @@ const Hero = () => {
       </section>
 
       {/* Partners Section - 30vh */}
-      <section className="relative h-[30vh] bg-card/80 border-t border-primary/30 overflow-hidden flex items-center">
-        {/* Diagonal accent */}
-        <div className="absolute left-0 bottom-0 w-1/3 h-full bg-gradient-to-r from-primary/20 to-transparent transform -skew-x-12 -translate-x-12" />
+      <section className="relative h-[30vh] bg-gradient-to-br from-background via-card to-background overflow-hidden flex items-center">
+        {/* Ambient glow effects */}
+        <div className="absolute top-0 left-1/4 w-96 h-32 bg-primary/10 blur-3xl rounded-full" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-32 bg-teal/10 blur-3xl rounded-full" />
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="flex items-center justify-between gap-8">
-            {/* Left side info */}
-            <div className="flex-shrink-0">
-              <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Trusted Partners</p>
-              <p className="gradient-text text-lg font-bold">~80% of Forbes Global 100</p>
-            </div>
+          {/* Header */}
+          <div className="text-center mb-8">
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">Trusted by Industry Leaders</p>
+            <p className="text-2xl font-bold">
+              <span className="gradient-text">~80%</span>
+              <span className="text-foreground/80 ml-2">of Forbes Global 100</span>
+            </p>
+          </div>
 
-            {/* Scrolling logos */}
-            <div className="flex-1 overflow-hidden relative">
-              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-card/80 to-transparent z-10" />
-              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-card/80 to-transparent z-10" />
-              
+          {/* Logos Grid */}
+          <div className="relative">
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+            
+            <div className="flex overflow-hidden">
               <div className="flex animate-scroll">
                 {[...partners, ...partners].map((partner, index) => (
                   <div
                     key={index}
-                    className="flex-shrink-0 mx-4 px-4 py-3 bg-card rounded-lg border border-border flex items-center gap-3 hover:border-primary/50 transition-colors"
+                    className="flex-shrink-0 mx-3 group"
                   >
-                    <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">
-                      {partner.logo}
+                    <div className="px-6 py-3 bg-card/50 backdrop-blur-sm rounded-xl border border-border/50 
+                                    hover:border-primary/50 hover:bg-card/80 transition-all duration-300
+                                    hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-teal/20 
+                                        flex items-center justify-center text-primary font-bold text-sm
+                                        group-hover:from-primary/30 group-hover:to-teal/30 transition-all">
+                          {partner.logo}
+                        </div>
+                        <span className="text-foreground/70 group-hover:text-foreground font-medium text-sm whitespace-nowrap transition-colors">
+                          {partner.name}
+                        </span>
+                      </div>
                     </div>
-                    <span className="text-muted-foreground font-semibold text-sm whitespace-nowrap">
-                      {partner.name}
-                    </span>
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* CTA */}
-            <a
-              href="#"
-              className="flex-shrink-0 inline-flex items-center gap-2 text-primary hover:text-primary/80 text-sm font-medium transition-colors"
-            >
-              Explore stories
-              <ArrowRight className="w-4 h-4" />
-            </a>
           </div>
         </div>
       </section>
