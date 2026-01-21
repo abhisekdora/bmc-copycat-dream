@@ -4,6 +4,7 @@ import StatsBanner from "@/components/landing/StatsBanner";
 import ProductShowcase from "@/components/landing/ProductShowcase";
 import VideoSection from "@/components/landing/VideoSection";
 import LogoCarousel from "@/components/landing/LogoCarousel";
+import TeamSection from "@/components/landing/TeamSection";
 import AwardsSection from "@/components/landing/AwardsSection";
 import NewsGrid from "@/components/landing/NewsGrid";
 import Footer from "@/components/landing/Footer";
@@ -17,6 +18,7 @@ const Index = () => {
       <ProductShowcase />
       <VideoSection />
       <LogoCarousel />
+      <TeamSection />
       <AwardsSection />
       <NewsGrid />
       <Footer />
