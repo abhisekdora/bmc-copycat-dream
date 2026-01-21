@@ -2,10 +2,22 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 
-const logos = [
-  "Microsoft", "Google", "Amazon", "Apple", "Meta", 
-  "Netflix", "Salesforce", "Oracle", "SAP", "IBM",
-  "Adobe", "Cisco", "Dell", "HP", "Intel",
+const partners = [
+  { name: "Microsoft", logo: "M" },
+  { name: "Google", logo: "G" },
+  { name: "Amazon", logo: "A" },
+  { name: "Apple", logo: "🍎" },
+  { name: "Meta", logo: "M" },
+  { name: "Netflix", logo: "N" },
+  { name: "Salesforce", logo: "SF" },
+  { name: "Oracle", logo: "O" },
+  { name: "SAP", logo: "S" },
+  { name: "IBM", logo: "IBM" },
+  { name: "Adobe", logo: "Ai" },
+  { name: "Cisco", logo: "C" },
+  { name: "Dell", logo: "D" },
+  { name: "HP", logo: "HP" },
+  { name: "Intel", logo: "i" },
 ];
 
 const Hero = () => {
@@ -162,13 +174,16 @@ const Hero = () => {
               <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-card/80 to-transparent z-10" />
               
               <div className="flex animate-scroll">
-                {[...logos, ...logos].map((logo, index) => (
+                {[...partners, ...partners].map((partner, index) => (
                   <div
                     key={index}
-                    className="flex-shrink-0 mx-4 px-6 py-3 bg-card rounded-lg border border-border flex items-center justify-center hover:border-primary/50 transition-colors"
+                    className="flex-shrink-0 mx-4 px-4 py-3 bg-card rounded-lg border border-border flex items-center gap-3 hover:border-primary/50 transition-colors"
                   >
+                    <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">
+                      {partner.logo}
+                    </div>
                     <span className="text-muted-foreground font-semibold text-sm whitespace-nowrap">
-                      {logo}
+                      {partner.name}
                     </span>
                   </div>
                 ))}

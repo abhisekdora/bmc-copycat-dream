@@ -1,13 +1,14 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, Search, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { name: "Solutions", hasDropdown: true },
-  { name: "Products", hasDropdown: true },
-  { name: "Partners", hasDropdown: true },
-  { name: "Support", hasDropdown: true },
-  { name: "About", hasDropdown: true },
+  { name: "Solutions", hasDropdown: true, href: "#" },
+  { name: "Products", hasDropdown: true, href: "#" },
+  { name: "About", hasDropdown: false, href: "/about" },
+  { name: "Teams", hasDropdown: false, href: "/teams" },
+  { name: "Support", hasDropdown: false, href: "#" },
 ];
 
 const Navbar = () => {
@@ -40,13 +41,23 @@ const Navbar = () => {
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-                >
-                  {item.name}
-                  {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
-                </button>
+                item.href.startsWith("/") ? (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.name}
+                    className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+                  >
+                    {item.name}
+                    {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
+                  </button>
+                )
               ))}
             </div>
 
@@ -81,13 +92,24 @@ const Navbar = () => {
           <div className="lg:hidden bg-background border-t border-border">
             <div className="container mx-auto px-4 py-4 space-y-2">
               {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href="#"
-                  className="block px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
-                >
-                  {item.name}
-                </a>
+                item.href.startsWith("/") ? (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="block px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.name}
+                    href="#"
+                    className="block px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                )
               ))}
               <div className="pt-4 border-t border-border space-y-2">
                 <a href="#" className="block px-4 py-2 text-foreground/80">Free Trials</a>
