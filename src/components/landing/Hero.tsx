@@ -1,23 +1,36 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, TrendingUp, Clock, Users, Zap } from "lucide-react";
 import { useEffect, useRef } from "react";
 
-const partners = [
-  { name: "Microsoft", logo: "M" },
-  { name: "Google", logo: "G" },
-  { name: "Amazon", logo: "A" },
-  { name: "Apple", logo: "🍎" },
-  { name: "Meta", logo: "M" },
-  { name: "Netflix", logo: "N" },
-  { name: "Salesforce", logo: "SF" },
-  { name: "Oracle", logo: "O" },
-  { name: "SAP", logo: "S" },
-  { name: "IBM", logo: "IBM" },
-  { name: "Adobe", logo: "Ai" },
-  { name: "Cisco", logo: "C" },
-  { name: "Dell", logo: "D" },
-  { name: "HP", logo: "HP" },
-  { name: "Intel", logo: "i" },
+const transformations = [
+  { 
+    company: "Global Retail Corp", 
+    metric: "40%", 
+    label: "Faster Order Processing",
+    icon: Clock,
+    description: "Reduced manual workflows by automating end-to-end fulfillment"
+  },
+  { 
+    company: "FinServe Holdings", 
+    metric: "3x", 
+    label: "Productivity Increase",
+    icon: TrendingUp,
+    description: "Streamlined compliance reporting with intelligent automation"
+  },
+  { 
+    company: "HealthFirst Systems", 
+    metric: "60%", 
+    label: "Cost Reduction",
+    icon: Zap,
+    description: "Eliminated redundant processes across 50+ departments"
+  },
+  { 
+    company: "TechVentures Inc", 
+    metric: "10K+", 
+    label: "Hours Saved Monthly",
+    icon: Users,
+    description: "Automated customer onboarding and support workflows"
+  },
 ];
 
 const Hero = () => {
@@ -155,55 +168,63 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* Partners Section - 30vh - Full Width */}
-      <section className="relative h-[30vh] bg-gradient-to-b from-background via-card/50 to-background overflow-hidden flex flex-col justify-center">
+      {/* Business Transformation Section */}
+      <section className="relative min-h-[35vh] bg-gradient-to-b from-background via-card/30 to-background overflow-hidden py-12">
         {/* Ambient glow effects */}
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-48 bg-primary/15 blur-[100px] rounded-full" />
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-48 bg-teal/15 blur-[100px] rounded-full" />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-64 bg-primary/10 blur-[120px] rounded-full" />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-64 bg-teal/10 blur-[120px] rounded-full" />
         
-        {/* Header - Centered */}
-        <div className="text-center mb-6 relative z-10">
-          <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground mb-2">Trusted by Industry Leaders</p>
-          <p className="text-3xl md:text-4xl font-bold">
-            <span className="gradient-text">~80%</span>
-            <span className="text-foreground/80 ml-3">of Forbes Global 100</span>
+        {/* Header */}
+        <div className="text-center mb-10 relative z-10 px-4">
+          <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground mb-3">Real Results. Real Impact.</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
+            <span className="text-foreground">Business </span>
+            <span className="gradient-text">Transformation</span>
+            <span className="text-foreground"> in Action</span>
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+            See how enterprises achieve breakthrough results with our Managed Workflow services
           </p>
         </div>
 
-        {/* Full-width Logo Carousel */}
-        <div className="relative w-full">
-          {/* Edge fades - full height */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 md:w-48 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 md:w-48 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
-          
-          <div className="flex overflow-hidden">
-            <div className="flex animate-scroll">
-              {[...partners, ...partners, ...partners].map((partner, index) => (
+        {/* Transformation Cards Grid */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {transformations.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
                 <div
                   key={index}
-                  className="flex-shrink-0 mx-4 group cursor-pointer"
+                  className="group relative bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-6
+                             hover:border-primary/50 hover:bg-card/80 transition-all duration-300
+                             hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2"
                 >
-                  <div className="px-8 py-5 bg-card/60 backdrop-blur-md rounded-2xl border border-border/60 
-                                  hover:border-primary/60 hover:bg-card transition-all duration-300
-                                  hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 hover:scale-105">
-                    <div className="flex items-center gap-4">
-                      {/* Prominent Logo */}
-                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/30 via-accent/20 to-teal/30 
-                                      flex items-center justify-center text-primary font-bold text-lg
-                                      group-hover:from-primary/50 group-hover:via-accent/30 group-hover:to-teal/50 
-                                      transition-all duration-300 shadow-lg shadow-primary/10
-                                      border border-primary/20 group-hover:border-primary/40">
-                        {partner.logo}
-                      </div>
-                      {/* Partner Name */}
-                      <span className="text-foreground/80 group-hover:text-foreground font-semibold text-base whitespace-nowrap transition-colors">
-                        {partner.name}
-                      </span>
-                    </div>
+                  {/* Icon */}
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-teal/20 
+                                  flex items-center justify-center mb-4
+                                  group-hover:from-primary/40 group-hover:to-teal/40 transition-all duration-300
+                                  border border-primary/20 group-hover:border-primary/40">
+                    <IconComponent className="w-6 h-6 text-primary" />
                   </div>
+                  
+                  {/* Metric */}
+                  <div className="mb-3">
+                    <span className="text-4xl md:text-5xl font-bold gradient-text">{item.metric}</span>
+                    <p className="text-sm text-primary/80 font-medium mt-1">{item.label}</p>
+                  </div>
+                  
+                  {/* Description */}
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                    {item.description}
+                  </p>
+                  
+                  {/* Company */}
+                  <p className="text-xs text-foreground/60 font-medium uppercase tracking-wider">
+                    {item.company}
+                  </p>
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
