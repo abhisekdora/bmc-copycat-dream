@@ -155,51 +155,54 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* Partners Section - 30vh */}
-      <section className="relative h-[30vh] bg-gradient-to-br from-background via-card to-background overflow-hidden flex items-center">
+      {/* Partners Section - 30vh - Full Width */}
+      <section className="relative h-[30vh] bg-gradient-to-b from-background via-card/50 to-background overflow-hidden flex flex-col justify-center">
         {/* Ambient glow effects */}
-        <div className="absolute top-0 left-1/4 w-96 h-32 bg-primary/10 blur-3xl rounded-full" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-32 bg-teal/10 blur-3xl rounded-full" />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-48 bg-primary/15 blur-[100px] rounded-full" />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-48 bg-teal/15 blur-[100px] rounded-full" />
         
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">Trusted by Industry Leaders</p>
-            <p className="text-2xl font-bold">
-              <span className="gradient-text">~80%</span>
-              <span className="text-foreground/80 ml-2">of Forbes Global 100</span>
-            </p>
-          </div>
+        {/* Header - Centered */}
+        <div className="text-center mb-6 relative z-10">
+          <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground mb-2">Trusted by Industry Leaders</p>
+          <p className="text-3xl md:text-4xl font-bold">
+            <span className="gradient-text">~80%</span>
+            <span className="text-foreground/80 ml-3">of Forbes Global 100</span>
+          </p>
+        </div>
 
-          {/* Logos Grid */}
-          <div className="relative">
-            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-            
-            <div className="flex overflow-hidden">
-              <div className="flex animate-scroll">
-                {[...partners, ...partners].map((partner, index) => (
-                  <div
-                    key={index}
-                    className="flex-shrink-0 mx-3 group"
-                  >
-                    <div className="px-6 py-3 bg-card/50 backdrop-blur-sm rounded-xl border border-border/50 
-                                    hover:border-primary/50 hover:bg-card/80 transition-all duration-300
-                                    hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-teal/20 
-                                        flex items-center justify-center text-primary font-bold text-sm
-                                        group-hover:from-primary/30 group-hover:to-teal/30 transition-all">
-                          {partner.logo}
-                        </div>
-                        <span className="text-foreground/70 group-hover:text-foreground font-medium text-sm whitespace-nowrap transition-colors">
-                          {partner.name}
-                        </span>
+        {/* Full-width Logo Carousel */}
+        <div className="relative w-full">
+          {/* Edge fades - full height */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 md:w-48 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 md:w-48 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
+          
+          <div className="flex overflow-hidden">
+            <div className="flex animate-scroll">
+              {[...partners, ...partners, ...partners].map((partner, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 mx-4 group cursor-pointer"
+                >
+                  <div className="px-8 py-5 bg-card/60 backdrop-blur-md rounded-2xl border border-border/60 
+                                  hover:border-primary/60 hover:bg-card transition-all duration-300
+                                  hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 hover:scale-105">
+                    <div className="flex items-center gap-4">
+                      {/* Prominent Logo */}
+                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/30 via-accent/20 to-teal/30 
+                                      flex items-center justify-center text-primary font-bold text-lg
+                                      group-hover:from-primary/50 group-hover:via-accent/30 group-hover:to-teal/50 
+                                      transition-all duration-300 shadow-lg shadow-primary/10
+                                      border border-primary/20 group-hover:border-primary/40">
+                        {partner.logo}
                       </div>
+                      {/* Partner Name */}
+                      <span className="text-foreground/80 group-hover:text-foreground font-semibold text-base whitespace-nowrap transition-colors">
+                        {partner.name}
+                      </span>
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
