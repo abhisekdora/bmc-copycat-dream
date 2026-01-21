@@ -34,57 +34,60 @@ const Hero = () => {
 
     const createParticle = (fullRandom = true) => {
       if (fullRandom) {
+        // Distribute across entire canvas
         return {
-          x: Math.random() * canvas.width * 1.5 - canvas.width * 0.25,
-          y: Math.random() * canvas.height * 1.5,
-          speed: 1 + Math.random() * 3,
-          length: 30 + Math.random() * 120,
-          opacity: 0.05 + Math.random() * 0.3,
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          speed: 2 + Math.random() * 4,
+          length: 50 + Math.random() * 150,
+          opacity: 0.05 + Math.random() * 0.25,
         };
       }
+      // Reset particle to start from left edge
       return {
         x: -Math.random() * 200,
-        y: canvas.height + Math.random() * 300,
-        speed: 1 + Math.random() * 3,
-        length: 30 + Math.random() * 120,
-        opacity: 0.05 + Math.random() * 0.3,
+        y: Math.random() * canvas.height,
+        speed: 2 + Math.random() * 4,
+        length: 50 + Math.random() * 150,
+        opacity: 0.05 + Math.random() * 0.25,
       };
     };
 
     const init = () => {
       resize();
-      particles = Array.from({ length: 150 }, () => createParticle(true));
+      particles = Array.from({ length: 120 }, () => createParticle(true));
     };
 
     const animate = () => {
-      ctx.fillStyle = "rgba(14, 51, 134, 0.1)";
+      // Dark background with slight trail effect
+      ctx.fillStyle = "rgba(14, 20, 40, 0.15)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((particle, index) => {
+        // Horizontal gradient for left-to-right motion
         const gradient = ctx.createLinearGradient(
           particle.x,
           particle.y,
           particle.x + particle.length,
-          particle.y - particle.length * 0.3
+          particle.y
         );
-        gradient.addColorStop(0, `rgba(45, 212, 191, 0)`);
-        gradient.addColorStop(0.5, `rgba(45, 212, 191, ${particle.opacity})`);
-        gradient.addColorStop(1, `rgba(139, 92, 246, ${particle.opacity * 0.5})`);
+        gradient.addColorStop(0, `rgba(255, 100, 50, 0)`);
+        gradient.addColorStop(0.3, `rgba(255, 120, 80, ${particle.opacity})`);
+        gradient.addColorStop(0.6, `rgba(200, 100, 150, ${particle.opacity * 0.7})`);
+        gradient.addColorStop(1, `rgba(100, 80, 180, ${particle.opacity * 0.3})`);
 
         ctx.strokeStyle = gradient;
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 1.5 + Math.random() * 0.5;
         ctx.beginPath();
         ctx.moveTo(particle.x, particle.y);
-        ctx.lineTo(
-          particle.x + particle.length,
-          particle.y - particle.length * 0.3
-        );
+        ctx.lineTo(particle.x + particle.length, particle.y);
         ctx.stroke();
 
+        // Move particle horizontally (left to right)
         particle.x += particle.speed;
-        particle.y -= particle.speed * 0.3;
 
-        if (particle.x > canvas.width + particle.length || particle.y < -particle.length) {
+        // Reset if off screen - spawn from left edge
+        if (particle.x > canvas.width + particle.length) {
           particles[index] = createParticle(false);
         }
       });
@@ -103,114 +106,87 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex pt-24">
-      {/* Left Side - 70% with Animation */}
-      <div className="relative w-full lg:w-[70%] flex items-center justify-center overflow-hidden">
+    <>
+      {/* Hero Section - 70vh */}
+      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden pt-16">
         {/* Animated Speed Lines Canvas */}
         <canvas
           ref={canvasRef}
           className="absolute inset-0 z-0 w-full h-full"
-          style={{ background: "hsl(var(--background))" }}
+          style={{ background: "linear-gradient(135deg, hsl(220 30% 12%) 0%, hsl(240 25% 8%) 50%, hsl(220 30% 15%) 100%)" }}
         />
 
-        {/* Gradient Orbs for depth */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/15 rounded-full blur-3xl animate-pulse delay-1000" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[hsl(var(--purple))]/10 rounded-full blur-3xl" />
-        </div>
+        {/* Gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/50 pointer-events-none" />
 
         {/* Content */}
-        <div className="container px-4 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="text-foreground">Business,</span>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-foreground">
+              Business, faster than
               <br />
-              <span className="gradient-text">faster than</span>
-              <br />
-              <span className="text-foreground">humanly possible</span>
+              humanly possible.
             </h1>
             
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-              AI and automation solutions that transform your enterprise operations
-              and drive unprecedented efficiency
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Make the most of your data and move at unstoppable speed with AI and automation that unifies, simplifies, and transforms the entire multi-cloud enterprise.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 glow-teal"
-              >
-                Contact Us
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="text-lg px-8 py-6 border-border hover:bg-secondary"
-              >
-                Watch Demo
-              </Button>
+            <Button 
+              variant="outline"
+              size="lg" 
+              className="text-lg px-8 py-6 border-foreground/50 hover:bg-foreground hover:text-background"
+            >
+              Contact us
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Section - 30vh */}
+      <section className="relative h-[30vh] bg-card/80 border-t border-primary/30 overflow-hidden flex items-center">
+        {/* Diagonal accent */}
+        <div className="absolute left-0 bottom-0 w-1/3 h-full bg-gradient-to-r from-primary/20 to-transparent transform -skew-x-12 -translate-x-12" />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex items-center justify-between gap-8">
+            {/* Left side info */}
+            <div className="flex-shrink-0">
+              <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Trusted Partners</p>
+              <p className="gradient-text text-lg font-bold">~80% of Forbes Global 100</p>
             </div>
-          </div>
-        </div>
 
-        {/* Scroll Indicator - visible on mobile */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce lg:hidden">
-          <div className="w-6 h-10 border-2 border-muted-foreground/50 rounded-full flex items-start justify-center p-1">
-            <div className="w-1.5 h-2.5 bg-muted-foreground/50 rounded-full" />
-          </div>
-        </div>
-      </div>
-
-      {/* Right Side - 30% Trusted Partners */}
-      <div className="hidden lg:flex w-[30%] bg-card/50 border-l border-border flex-col justify-center overflow-hidden">
-        <div className="px-6 py-8">
-          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            Trusted Partner
-          </div>
-          <h3 className="text-2xl font-bold text-foreground mb-2">
-            AI engine for
-          </h3>
-          <p className="gradient-text text-xl font-bold mb-4">
-            ~80% of Forbes Global 100
-          </p>
-          <p className="text-muted-foreground text-sm mb-6">
-            Leading enterprises worldwide trust our platform
-          </p>
-        </div>
-
-        {/* Vertical Scrolling Logos */}
-        <div className="relative flex-1 overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-card/50 to-transparent z-10" />
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-card/50 to-transparent z-10" />
-          
-          <div className="animate-scroll-vertical">
-            {[...logos, ...logos].map((logo, index) => (
-              <div
-                key={index}
-                className="mx-4 my-3 h-14 bg-card rounded-lg border border-border flex items-center justify-center hover:border-primary/50 transition-colors"
-              >
-                <span className="text-muted-foreground font-semibold text-sm">
-                  {logo}
-                </span>
+            {/* Scrolling logos */}
+            <div className="flex-1 overflow-hidden relative">
+              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-card/80 to-transparent z-10" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-card/80 to-transparent z-10" />
+              
+              <div className="flex animate-scroll">
+                {[...logos, ...logos].map((logo, index) => (
+                  <div
+                    key={index}
+                    className="flex-shrink-0 mx-4 px-6 py-3 bg-card rounded-lg border border-border flex items-center justify-center hover:border-primary/50 transition-colors"
+                  >
+                    <span className="text-muted-foreground font-semibold text-sm whitespace-nowrap">
+                      {logo}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* CTA */}
+            <a
+              href="#"
+              className="flex-shrink-0 inline-flex items-center gap-2 text-primary hover:text-primary/80 text-sm font-medium transition-colors"
+            >
+              Explore stories
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
-
-        <div className="px-6 py-4 border-t border-border">
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 text-sm font-medium transition-colors"
-          >
-            Explore customer stories
-            <span>→</span>
-          </a>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
