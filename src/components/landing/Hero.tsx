@@ -132,9 +132,9 @@ const Hero = () => {
 
   return (
     <>
-      {/* Hero Section - 70vh */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden pt-16">
-        {/* Animated Speed Lines Canvas */}
+      {/* Combined Hero Section - Full viewport with 70/30 split */}
+      <section className="relative h-screen flex flex-col overflow-hidden">
+        {/* Animated Speed Lines Canvas - covers entire section */}
         <canvas
           ref={canvasRef}
           className="absolute inset-0 z-0 w-full h-full"
@@ -142,65 +142,64 @@ const Hero = () => {
         />
 
         {/* Gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/50 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 pointer-events-none z-[1]" />
 
-        {/* Content */}
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-foreground">
-              Business, faster than
-              <br />
-              humanly possible.
-            </h1>
-            
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Make the most of your data and move at unstoppable speed with AI and automation that unifies, simplifies, and transforms the entire multi-cloud enterprise.
-            </p>
+        {/* Hero Content - 70% */}
+        <div className="relative z-10 flex-[7] flex items-center justify-center pt-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-foreground">
+                Business, faster than
+                <br />
+                humanly possible.
+              </h1>
+              
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Make the most of your data and move at unstoppable speed with AI and automation that unifies, simplifies, and transforms the entire multi-cloud enterprise.
+              </p>
 
-            <Button 
-              variant="outline"
-              size="lg" 
-              className="text-lg px-8 py-6 border-foreground/50 hover:bg-foreground hover:text-background"
-            >
-              Contact us
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Trusted Partners Section */}
-      <section className="py-16 bg-background overflow-hidden">
-        <div className="container mx-auto px-4 mb-10">
-          <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <span className="w-2 h-2 rounded-full bg-primary" />
-              Trusted Partners
+              <Button 
+                variant="outline"
+                size="lg" 
+                className="text-lg px-8 py-6 border-foreground/50 hover:bg-foreground hover:text-background"
+              >
+                Contact us
+              </Button>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Powering the world's leading enterprises
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Industry leaders trust our platform to drive their digital transformation
-            </p>
           </div>
         </div>
 
-        {/* Logo Carousel */}
-        <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
-          
-          <div className="flex animate-scroll">
-            {[...Array(2)].flatMap(() => 
-              ["Microsoft", "Google", "Amazon", "Apple", "Meta", "Netflix", "Salesforce", "Oracle", "SAP", "IBM", "Adobe", "Cisco"].map((logo, index) => (
-                <div
-                  key={`${logo}-${index}`}
-                  className="flex-shrink-0 mx-6 w-36 h-16 bg-card/60 backdrop-blur-sm rounded-xl border border-border/50 flex items-center justify-center hover:border-primary/50 hover:bg-card/80 transition-all duration-300"
-                >
-                  <span className="text-muted-foreground font-semibold">{logo}</span>
-                </div>
-              ))
-            )}
+        {/* Trusted Partners - 30% */}
+        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-gradient-to-t from-background via-background/90 to-transparent">
+          <div className="container mx-auto px-4 mb-4">
+            <div className="text-center">
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                Trusted Partners
+              </div>
+              <h2 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+                Powering the world's leading enterprises
+              </h2>
+            </div>
+          </div>
+
+          {/* Logo Carousel */}
+          <div className="relative flex-1 flex items-center">
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+            
+            <div className="flex animate-scroll">
+              {[...Array(2)].flatMap(() => 
+                ["Microsoft", "Google", "Amazon", "Apple", "Meta", "Netflix", "Salesforce", "Oracle", "SAP", "IBM", "Adobe", "Cisco"].map((logo, index) => (
+                  <div
+                    key={`${logo}-${index}`}
+                    className="flex-shrink-0 mx-4 w-32 h-12 bg-card/60 backdrop-blur-sm rounded-lg border border-border/50 flex items-center justify-center hover:border-primary/50 hover:bg-card/80 transition-all duration-300"
+                  >
+                    <span className="text-muted-foreground font-semibold text-sm">{logo}</span>
+                  </div>
+                ))
+              )}
+            </div>
           </div>
         </div>
       </section>
