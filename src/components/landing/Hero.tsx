@@ -170,32 +170,60 @@ const Hero = () => {
         </div>
 
         {/* Trusted Partners - 30% */}
-        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-gradient-to-t from-background via-background/90 to-transparent">
-          <div className="container mx-auto px-4 mb-4">
+        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-gradient-to-t from-background via-background/95 to-transparent">
+          <div className="container mx-auto px-4 mb-6">
             <div className="text-center">
-              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-medium mb-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Trusted Partners
-              </div>
-              <h2 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">
+                Trusted by Industry Leaders
+              </p>
+              <h2 className="text-xl md:text-2xl font-semibold text-foreground">
                 Powering the world's leading enterprises
               </h2>
             </div>
           </div>
 
           {/* Logo Carousel */}
-          <div className="relative flex-1 flex items-center">
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+          <div className="relative flex-1 flex items-center overflow-hidden">
+            <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-background via-background/80 to-transparent z-10" />
             
             <div className="flex animate-scroll">
               {[...Array(2)].flatMap(() => 
-                ["Microsoft", "Google", "Amazon", "Apple", "Meta", "Netflix", "Salesforce", "Oracle", "SAP", "IBM", "Adobe", "Cisco"].map((logo, index) => (
+                [
+                  { name: "Microsoft", initials: "M" },
+                  { name: "Google", initials: "G" },
+                  { name: "Amazon", initials: "A" },
+                  { name: "Apple", initials: "" },
+                  { name: "Meta", initials: "M" },
+                  { name: "Netflix", initials: "N" },
+                  { name: "Salesforce", initials: "SF" },
+                  { name: "Oracle", initials: "O" },
+                  { name: "SAP", initials: "SAP" },
+                  { name: "IBM", initials: "IBM" },
+                  { name: "Adobe", initials: "A" },
+                  { name: "Cisco", initials: "C" },
+                ].map((partner, index) => (
                   <div
-                    key={`${logo}-${index}`}
-                    className="flex-shrink-0 mx-4 w-32 h-12 bg-card/60 backdrop-blur-sm rounded-lg border border-border/50 flex items-center justify-center hover:border-primary/50 hover:bg-card/80 transition-all duration-300"
+                    key={`${partner.name}-${index}`}
+                    className="flex-shrink-0 mx-5 group"
                   >
-                    <span className="text-muted-foreground font-semibold text-sm">{logo}</span>
+                    <div className="flex items-center gap-3 px-6 py-3 bg-card/40 backdrop-blur-md rounded-full border border-border/30 
+                                    hover:border-primary/40 hover:bg-card/60 transition-all duration-300
+                                    hover:shadow-lg hover:shadow-primary/5">
+                      {/* Logo/Initial */}
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-foreground/10 to-foreground/5 
+                                      flex items-center justify-center border border-foreground/10
+                                      group-hover:from-primary/20 group-hover:to-primary/10 group-hover:border-primary/30 
+                                      transition-all duration-300">
+                        <span className="text-xs font-bold text-foreground/70 group-hover:text-primary transition-colors">
+                          {partner.initials || partner.name.charAt(0)}
+                        </span>
+                      </div>
+                      {/* Company Name */}
+                      <span className="text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors whitespace-nowrap">
+                        {partner.name}
+                      </span>
+                    </div>
                   </div>
                 ))
               )}
