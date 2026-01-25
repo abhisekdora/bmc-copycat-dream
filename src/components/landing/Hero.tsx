@@ -149,13 +149,13 @@ const Hero = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-foreground">
-                Business, faster than
+                A Intelligent workflow for the
                 <br />
-                humanly possible.
+                Modern Enterprise
               </h1>
               
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Make the most of your data and move at unstoppable speed with AI and automation that unifies, simplifies, and transforms the entire multi-cloud enterprise.
+                Break down barriers with enterprise workflow management that enables seamless collaboration across domains and accelerates delivery
               </p>
 
               <Button 
