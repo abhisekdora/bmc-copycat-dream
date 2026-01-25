@@ -174,10 +174,10 @@ const Hero = () => {
           <div className="container mx-auto px-4 mb-6">
             <div className="text-center">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">
-                Trusted by Industry Leaders
+                Trusted by various of Line of Business
               </p>
               <h2 className="text-xl md:text-2xl font-semibold text-foreground">
-                Powering the world's leading enterprises
+                Powering the JPMorganChase leading enterprises
               </h2>
             </div>
           </div>
