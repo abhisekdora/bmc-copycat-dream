@@ -182,48 +182,36 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Logo Carousel */}
+          {/* Minimal Logo Carousel */}
           <div className="relative flex-1 flex items-center overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-background via-background/80 to-transparent z-10" />
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
             
             <div className="flex animate-scroll">
               {[...Array(2)].flatMap(() => 
                 [
-                  { name: "Microsoft", initials: "M" },
-                  { name: "Google", initials: "G" },
-                  { name: "Amazon", initials: "A" },
-                  { name: "Apple", initials: "" },
-                  { name: "Meta", initials: "M" },
-                  { name: "Netflix", initials: "N" },
-                  { name: "Salesforce", initials: "SF" },
-                  { name: "Oracle", initials: "O" },
-                  { name: "SAP", initials: "SAP" },
-                  { name: "IBM", initials: "IBM" },
-                  { name: "Adobe", initials: "A" },
-                  { name: "Cisco", initials: "C" },
+                  "Asset Management",
+                  "Corporate Banking",
+                  "Investment Banking",
+                  "Commercial Banking",
+                  "Wealth Management",
+                  "Risk Management",
+                  "Treasury Services",
+                  "Private Banking",
+                  "Securities Services",
+                  "Digital Platforms",
+                  "Global Markets",
+                  "Research",
                 ].map((partner, index) => (
                   <div
-                    key={`${partner.name}-${index}`}
-                    className="flex-shrink-0 mx-5 group"
+                    key={`${partner}-${index}`}
+                    className="flex-shrink-0 mx-10 group"
                   >
-                    <div className="flex items-center gap-3 px-6 py-3 bg-card/40 backdrop-blur-md rounded-full border border-border/30 
-                                    hover:border-primary/40 hover:bg-card/60 transition-all duration-300
-                                    hover:shadow-lg hover:shadow-primary/5">
-                      {/* Logo/Initial */}
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-foreground/10 to-foreground/5 
-                                      flex items-center justify-center border border-foreground/10
-                                      group-hover:from-primary/20 group-hover:to-primary/10 group-hover:border-primary/30 
-                                      transition-all duration-300">
-                        <span className="text-xs font-bold text-foreground/70 group-hover:text-primary transition-colors">
-                          {partner.initials || partner.name.charAt(0)}
-                        </span>
-                      </div>
-                      {/* Company Name */}
-                      <span className="text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors whitespace-nowrap">
-                        {partner.name}
-                      </span>
-                    </div>
+                    <span className="text-lg font-light tracking-wide text-foreground/40 
+                                     hover:text-foreground/90 transition-all duration-500 cursor-default
+                                     whitespace-nowrap">
+                      {partner}
+                    </span>
                   </div>
                 ))
               )}
