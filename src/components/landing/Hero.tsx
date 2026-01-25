@@ -170,7 +170,7 @@ const Hero = () => {
         </div>
 
         {/* Trusted Partners - 30% */}
-        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-gradient-to-t from-background via-background/95 to-transparent">
+        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-gradient-to-t from-background via-background to-background/60 border-t border-border/20">
           <div className="container mx-auto px-4 mb-6">
             <div className="text-center">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">
