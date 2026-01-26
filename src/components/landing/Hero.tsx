@@ -134,34 +134,31 @@ const Hero = () => {
     <>
       {/* Combined Hero Section - Full viewport with 70/30 split */}
       <section className="relative h-screen flex flex-col overflow-hidden">
-        {/* Animated Speed Lines Canvas - covers entire section */}
+        {/* Animated Speed Lines Canvas - covers hero portion */}
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 z-0 w-full h-full"
-          style={{ background: "linear-gradient(135deg, hsl(220 30% 12%) 0%, hsl(240 25% 8%) 50%, hsl(220 30% 15%) 100%)" }}
+          className="absolute inset-0 z-0 w-full h-[70%]"
+          style={{ background: "linear-gradient(135deg, hsl(221 83% 25%) 0%, hsl(221 83% 15%) 50%, hsl(221 83% 20%) 100%)" }}
         />
-
-        {/* Gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 pointer-events-none z-[1]" />
 
         {/* Hero Content - 70% */}
         <div className="relative z-10 flex-[7] flex items-center justify-center pt-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-foreground">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
                 A Intelligent workflow for the
                 <br />
                 Modern Enterprise
               </h1>
               
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
                 Break down barriers with enterprise workflow management that enables seamless collaboration across domains and accelerates delivery
               </p>
 
               <Button 
                 variant="outline"
                 size="lg" 
-                className="text-lg px-8 py-6 border-foreground/50 hover:bg-foreground hover:text-background"
+                className="text-lg px-8 py-6 border-white/50 text-white hover:bg-white hover:text-primary"
               >
                 Contact us
               </Button>
@@ -169,8 +166,8 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Trusted Partners - 30% */}
-        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-gradient-to-t from-background via-background to-background/60 border-t border-border/20">
+        {/* Trusted Partners - 30% with Light Background Card */}
+        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-card shadow-lg">
           <div className="container mx-auto px-4 mb-6">
             <div className="text-center">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">
@@ -184,8 +181,8 @@ const Hero = () => {
 
           {/* Minimal Logo Carousel */}
           <div className="relative flex-1 flex items-center overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-card to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-card to-transparent z-10" />
             
             <div className="flex animate-scroll">
               {[...Array(2)].flatMap(() => 
@@ -207,8 +204,8 @@ const Hero = () => {
                     key={`${partner}-${index}`}
                     className="flex-shrink-0 mx-10 group"
                   >
-                    <span className="text-lg font-light tracking-wide text-foreground/40 
-                                     hover:text-foreground/90 transition-all duration-500 cursor-default
+                    <span className="text-lg font-medium tracking-wide text-primary/70 
+                                     hover:text-primary transition-all duration-500 cursor-default
                                      whitespace-nowrap">
                       {partner}
                     </span>
@@ -221,10 +218,9 @@ const Hero = () => {
       </section>
 
       {/* Business Transformation Section */}
-      <section className="relative min-h-[35vh] bg-gradient-to-b from-background via-card/30 to-background overflow-hidden py-12">
-        {/* Ambient glow effects */}
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-64 bg-primary/10 blur-[120px] rounded-full" />
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-64 bg-teal/10 blur-[120px] rounded-full" />
+      <section className="relative min-h-[35vh] bg-background overflow-hidden py-12">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
         
         {/* Header */}
         <div className="text-center mb-10 relative z-10 px-4">
