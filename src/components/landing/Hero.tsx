@@ -179,9 +179,9 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Trusted Partners - 30% with Soft Background Card */}
-        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-gradient-to-b from-card/50 to-secondary/40 border-t border-border/30 py-8">
-          <div className="container mx-auto px-4 mb-6">
+        {/* Trusted Partners - 30% Carousel */}
+        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-gradient-to-b from-card/50 to-secondary/40 border-t border-border/30">
+          <div className="container mx-auto px-4 mb-4">
             <div className="text-center">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">
                 Trusted by various of Line of Business
@@ -192,32 +192,36 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Business Lines Grid */}
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-5xl mx-auto">
-              {linesOfBusiness.map((line, index) => {
-                const IconComponent = line.icon;
-                return (
-                  <div
-                    key={index}
-                    className="group relative bg-card/80 backdrop-blur-sm rounded-lg border border-border/40 p-4
-                               hover:bg-card hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5
-                               transition-all duration-300 hover:-translate-y-1 cursor-default"
-                  >
-                    <div className="flex flex-col items-center text-center gap-2">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/10 to-primary/5 
-                                      flex items-center justify-center
-                                      group-hover:from-primary/20 group-hover:to-primary/10
-                                      transition-all duration-300">
-                        <IconComponent className="w-5 h-5 text-primary" />
+          {/* Styled Carousel */}
+          <div className="relative flex-1 flex items-center overflow-hidden">
+            {/* Gradient fades */}
+            <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-secondary/60 via-secondary/40 to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-secondary/60 via-secondary/40 to-transparent z-10" />
+            
+            <div className="flex animate-scroll">
+              {[...Array(2)].flatMap(() => 
+                linesOfBusiness.map((line, index) => {
+                  const IconComponent = line.icon;
+                  return (
+                    <div
+                      key={`${line.name}-${index}`}
+                      className="flex-shrink-0 mx-3 group"
+                    >
+                      <div className="flex items-center gap-2 px-5 py-2.5 rounded-full 
+                                      bg-card border border-border/60
+                                      group-hover:border-primary/50 group-hover:bg-primary/5
+                                      group-hover:shadow-md group-hover:shadow-primary/10
+                                      transition-all duration-300 cursor-default">
+                        <IconComponent className="w-4 h-4 text-primary" />
+                        <span className="text-sm font-medium text-foreground/80 whitespace-nowrap
+                                         group-hover:text-primary transition-colors">
+                          {line.name}
+                        </span>
                       </div>
-                      <span className="text-xs font-medium text-foreground/80 group-hover:text-primary transition-colors">
-                        {line.name}
-                      </span>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })
+              )}
             </div>
           </div>
         </div>
