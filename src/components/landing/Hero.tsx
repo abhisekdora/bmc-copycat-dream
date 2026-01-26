@@ -1,6 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, TrendingUp, Clock, Users, Zap } from "lucide-react";
+import { TrendingUp, Clock, Users, Zap, Building2, Wallet, TrendingDown, Shield, Landmark, Briefcase, Globe, BarChart3 } from "lucide-react";
 import { useEffect, useRef } from "react";
+
+const linesOfBusiness = [
+  { name: "Asset Management", icon: TrendingUp },
+  { name: "Corporate Banking", icon: Building2 },
+  { name: "Investment Banking", icon: Wallet },
+  { name: "Commercial Banking", icon: Briefcase },
+  { name: "Wealth Management", icon: TrendingDown },
+  { name: "Risk Management", icon: Shield },
+  { name: "Treasury Services", icon: Landmark },
+  { name: "Private Banking", icon: Users },
+  { name: "Securities Services", icon: BarChart3 },
+  { name: "Digital Platforms", icon: Globe },
+];
 
 const transformations = [
   { 
@@ -167,7 +180,7 @@ const Hero = () => {
         </div>
 
         {/* Trusted Partners - 30% with Soft Background Card */}
-        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-gradient-to-b from-secondary/80 to-card shadow-lg border-t border-border/30">
+        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-gradient-to-b from-card/50 to-secondary/40 border-t border-border/30 py-8">
           <div className="container mx-auto px-4 mb-6">
             <div className="text-center">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">
@@ -179,39 +192,32 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Minimal Logo Carousel */}
-          <div className="relative flex-1 flex items-center overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-card to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-card to-transparent z-10" />
-            
-            <div className="flex animate-scroll">
-              {[...Array(2)].flatMap(() => 
-                [
-                  "Asset Management",
-                  "Corporate Banking",
-                  "Investment Banking",
-                  "Commercial Banking",
-                  "Wealth Management",
-                  "Risk Management",
-                  "Treasury Services",
-                  "Private Banking",
-                  "Securities Services",
-                  "Digital Platforms",
-                  "Global Markets",
-                  "Research",
-                ].map((partner, index) => (
+          {/* Business Lines Grid */}
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-5xl mx-auto">
+              {linesOfBusiness.map((line, index) => {
+                const IconComponent = line.icon;
+                return (
                   <div
-                    key={`${partner}-${index}`}
-                    className="flex-shrink-0 mx-10 group"
+                    key={index}
+                    className="group relative bg-card/80 backdrop-blur-sm rounded-lg border border-border/40 p-4
+                               hover:bg-card hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5
+                               transition-all duration-300 hover:-translate-y-1 cursor-default"
                   >
-                    <span className="text-lg font-medium tracking-wide text-primary/70 
-                                     hover:text-primary transition-all duration-500 cursor-default
-                                     whitespace-nowrap">
-                      {partner}
-                    </span>
+                    <div className="flex flex-col items-center text-center gap-2">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/10 to-primary/5 
+                                      flex items-center justify-center
+                                      group-hover:from-primary/20 group-hover:to-primary/10
+                                      transition-all duration-300">
+                        <IconComponent className="w-5 h-5 text-primary" />
+                      </div>
+                      <span className="text-xs font-medium text-foreground/80 group-hover:text-primary transition-colors">
+                        {line.name}
+                      </span>
+                    </div>
                   </div>
-                ))
-              )}
+                );
+              })}
             </div>
           </div>
         </div>
