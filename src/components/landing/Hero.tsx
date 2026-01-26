@@ -166,8 +166,8 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Trusted Partners - 30% with Light Background Card */}
-        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-card shadow-lg">
+        {/* Trusted Partners - 30% with Soft Background Card */}
+        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-gradient-to-b from-secondary/80 to-card shadow-lg border-t border-border/30">
           <div className="container mx-auto px-4 mb-6">
             <div className="text-center">
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">
@@ -218,9 +218,9 @@ const Hero = () => {
       </section>
 
       {/* Business Transformation Section */}
-      <section className="relative min-h-[35vh] bg-background overflow-hidden py-12">
+      <section className="relative min-h-[35vh] bg-gradient-to-b from-secondary/50 via-background to-secondary/30 overflow-hidden py-12">
         {/* Subtle background pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/8 via-transparent to-transparent" />
         
         {/* Header */}
         <div className="text-center mb-10 relative z-10 px-4">

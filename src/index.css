@@ -6,55 +6,55 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 222 47% 11%;
+    --background: 220 20% 95%;
+    --foreground: 222 47% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card: 220 20% 98%;
+    --card-foreground: 222 47% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover: 220 20% 98%;
+    --popover-foreground: 222 47% 15%;
 
-    --primary: 221 83% 53%;
+    --primary: 221 70% 45%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 220 25% 90%;
+    --secondary-foreground: 222 47% 20%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 220 20% 88%;
+    --muted-foreground: 220 15% 40%;
 
-    --accent: 25 95% 55%;
+    --accent: 25 90% 52%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 221 83% 53%;
+    --border: 220 20% 85%;
+    --input: 220 20% 85%;
+    --ring: 221 70% 45%;
 
     --radius: 0.5rem;
 
     /* Custom SMARTFLOW colors */
-    --teal: 174 72% 40%;
-    --teal-glow: 174 72% 50%;
-    --orange: 25 95% 53%;
-    --orange-glow: 25 95% 63%;
-    --purple: 270 60% 50%;
-    --purple-glow: 270 60% 60%;
-    --navy: 221 83% 53%;
-    --navy-light: 221 70% 60%;
-    --navy-deep: 221 83% 40%;
+    --teal: 174 60% 38%;
+    --teal-glow: 174 60% 48%;
+    --orange: 25 90% 52%;
+    --orange-glow: 25 90% 62%;
+    --purple: 270 50% 48%;
+    --purple-glow: 270 50% 58%;
+    --navy: 221 70% 45%;
+    --navy-light: 221 60% 55%;
+    --navy-deep: 221 70% 35%;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 221 83% 53%;
+    --sidebar-background: 220 20% 98%;
+    --sidebar-foreground: 222 47% 15%;
+    --sidebar-primary: 221 70% 45%;
     --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 210 40% 96%;
-    --sidebar-accent-foreground: 222 47% 11%;
-    --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 221 83% 53%;
+    --sidebar-accent: 220 25% 90%;
+    --sidebar-accent-foreground: 222 47% 20%;
+    --sidebar-border: 220 20% 85%;
+    --sidebar-ring: 221 70% 45%;
   }
 
   .dark {
