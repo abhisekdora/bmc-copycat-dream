@@ -6,94 +6,94 @@
 
 @layer base {
   :root {
-    --background: 220 20% 95%;
-    --foreground: 222 47% 15%;
+    --background: 221 81% 12%;
+    --foreground: 210 40% 98%;
 
-    --card: 220 20% 98%;
-    --card-foreground: 222 47% 15%;
+    --card: 221 81% 15%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 220 20% 98%;
-    --popover-foreground: 222 47% 15%;
+    --popover: 221 81% 15%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 221 70% 45%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 174 72% 45%;
+    --primary-foreground: 221 81% 12%;
 
-    --secondary: 220 25% 90%;
-    --secondary-foreground: 222 47% 20%;
+    --secondary: 221 81% 20%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 20% 88%;
-    --muted-foreground: 220 15% 40%;
+    --muted: 221 60% 22%;
+    --muted-foreground: 215 30% 70%;
 
-    --accent: 25 90% 52%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 25 95% 55%;
+    --accent-foreground: 221 81% 12%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 20% 85%;
-    --input: 220 20% 85%;
-    --ring: 221 70% 45%;
+    --border: 221 60% 25%;
+    --input: 221 60% 25%;
+    --ring: 174 72% 45%;
 
     --radius: 0.5rem;
 
     /* Custom SMARTFLOW colors */
-    --teal: 174 60% 38%;
-    --teal-glow: 174 60% 48%;
-    --orange: 25 90% 52%;
-    --orange-glow: 25 90% 62%;
-    --purple: 270 50% 48%;
-    --purple-glow: 270 50% 58%;
-    --navy: 221 70% 45%;
-    --navy-light: 221 60% 55%;
-    --navy-deep: 221 70% 35%;
+    --teal: 174 72% 45%;
+    --teal-glow: 174 72% 55%;
+    --orange: 25 95% 55%;
+    --orange-glow: 25 95% 65%;
+    --purple: 270 60% 55%;
+    --purple-glow: 270 60% 65%;
+    --navy: 221 81% 12%;
+    --navy-light: 221 81% 20%;
+    --navy-deep: 221 81% 29%;
 
-    --sidebar-background: 220 20% 98%;
-    --sidebar-foreground: 222 47% 15%;
-    --sidebar-primary: 221 70% 45%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 220 25% 90%;
-    --sidebar-accent-foreground: 222 47% 20%;
-    --sidebar-border: 220 20% 85%;
-    --sidebar-ring: 221 70% 45%;
+    --sidebar-background: 221 81% 15%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 174 72% 45%;
+    --sidebar-primary-foreground: 221 81% 12%;
+    --sidebar-accent: 221 81% 20%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 221 60% 25%;
+    --sidebar-ring: 174 72% 45%;
   }
 
   .dark {
-    --background: 222 47% 11%;
+    --background: 221 81% 12%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 14%;
+    --card: 221 81% 15%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 47% 14%;
+    --popover: 221 81% 15%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 174 72% 45%;
+    --primary-foreground: 221 81% 12%;
 
-    --secondary: 217 33% 17%;
+    --secondary: 221 81% 20%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 221 60% 22%;
+    --muted-foreground: 215 30% 70%;
 
     --accent: 25 95% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent-foreground: 221 81% 12%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 25%;
-    --input: 217 33% 25%;
-    --ring: 221 83% 53%;
+    --border: 221 60% 25%;
+    --input: 221 60% 25%;
+    --ring: 174 72% 45%;
 
-    --sidebar-background: 222 47% 14%;
+    --sidebar-background: 221 81% 15%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 221 83% 53%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 217 33% 17%;
+    --sidebar-primary: 174 72% 45%;
+    --sidebar-primary-foreground: 221 81% 12%;
+    --sidebar-accent: 221 81% 20%;
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 25%;
-    --sidebar-ring: 221 83% 53%;
+    --sidebar-border: 221 60% 25%;
+    --sidebar-ring: 174 72% 45%;
   }
 }
 
