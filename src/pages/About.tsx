@@ -114,8 +114,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Mission Section */}
-      <section className="py-16 px-4 bg-card/50">
+      {/* Mission Section - commented out */}
+      {/* <section className="py-16 px-4 bg-card/50">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -152,6 +152,68 @@ const About = () => {
                 <p className="text-sm text-muted-foreground">24/7 expert assistance</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section> */}
+
+      {/* Features Section */}
+      <section className="py-16 px-4 bg-card/50">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <Zap className="w-4 h-4" />
+              Platform Capabilities
+            </div>
+            <h2 className="text-3xl font-bold text-foreground mb-4">SmartFlow Features</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A powerful suite of tools designed to streamline enterprise workflows, automate processes, and drive operational excellence.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Server,
+                title: "Workflow Automation",
+                description: "Automate complex business processes with drag-and-drop workflow builder and customizable task orchestration.",
+              },
+              {
+                icon: Search,
+                title: "Case Management",
+                description: "Track, manage, and resolve cases with a unified view across all business lines and departments.",
+              },
+              {
+                icon: BarChart3,
+                title: "Real-Time Analytics",
+                description: "Standardized dashboards with near real-time data feeds for actionable insights and reporting.",
+              },
+              {
+                icon: Shield,
+                title: "Enterprise Security",
+                description: "Role-based access control, centralized entitlements, and IDA authentication for robust security.",
+              },
+              {
+                icon: Globe,
+                title: "Cross-Domain Collaboration",
+                description: "Seamlessly collaborate across lines of business with shared workflows and unified task management.",
+              },
+              {
+                icon: Database,
+                title: "Scalable Infrastructure",
+                description: "Cloud-native architecture deployed on GAIA with domain-specific clusters and environment segregation.",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="bg-card p-6 rounded-xl border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 group"
+              >
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <feature.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2 text-lg">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
