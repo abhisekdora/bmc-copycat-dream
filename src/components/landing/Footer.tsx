@@ -1,7 +1,12 @@
 import { Linkedin, Twitter, Youtube, Facebook } from "lucide-react";
 
 const footerLinks = {
-  Solutions: ["Workflow Orchestration", "Mainframe", "Cloud Operations", "Security & Compliance"],
+  Solutions: [
+    "Workflow Orchestration",
+    "Mainframe",
+    "Cloud Operations",
+    "Security & Compliance",
+  ],
   Products: ["SMARTFLOW Helix", "Control-M", "AMI", "MainView"],
   Company: ["About Us", "Careers", "Newsroom", "Investor Relations"],
   Resources: ["Blog", "Events", "Webinars", "Case Studies"],
@@ -13,9 +18,9 @@ const Footer = () => {
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-16">
         {/* Main Footer */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
-          {/* Logo Column */}
-          <div className="col-span-2 md:col-span-3 lg:col-span-1">
+        {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12"> */}
+        {/* Logo Column */}
+        {/* <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <a href="#" className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-lg gradient-border flex items-center justify-center">
                 <span className="text-background font-bold text-xl">S</span>
@@ -39,10 +44,10 @@ const Footer = () => {
                 <Facebook className="w-5 h-5" />
               </a>
             </div>
-          </div>
+          </div> */}
 
-          {/* Link Columns */}
-          {Object.entries(footerLinks).map(([category, links]) => (
+        {/* Link Columns */}
+        {/* {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h4 className="font-semibold text-foreground mb-4">{category}</h4>
               <ul className="space-y-2">
@@ -59,24 +64,36 @@ const Footer = () => {
               </ul>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-8  flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 SMARTFLOW Software, Inc. All rights reserved.
+            © 2026 SMARTFLOW Software, Inc. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-              Privacy Policy
+            <a
+              href="#"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Escalation Matrix
             </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="#"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
               Terms of Use
             </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-              Cookie Settings
+            <a
+              href="#"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Sandbox
             </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="#"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
               Accessibility
             </a>
           </div>

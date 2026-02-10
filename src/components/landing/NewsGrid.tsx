@@ -1,28 +1,34 @@
 import { ArrowRight } from "lucide-react";
+import smartflowImg from "../../assets/SA.png";
+import news2Img from "../../assets/OL.png";
+import news3Img from "../../assets/LLM.png";
 
 const news = [
   {
-    category: "Award Spotlight",
+    category: "External Integration",
     categoryColor: "primary",
-    title: "SMARTFLOW Named Leader in ESM for 11th Consecutive Year",
-    description: "Gartner recognizes our commitment to innovation and customer success in enterprise service management.",
-    image: "gradient-1",
+    title: "SMARTFLOW integration with SMART APPROVAL",
+    description:
+      "SMARTAPPROVAL integration will allow users to approve workflows directly from their SMARTFLOW dashboard.",
+    image: smartflowImg,
     link: "#",
   },
   {
-    category: "Product Release",
+    category: "External Integration",
     categoryColor: "accent",
-    title: "Introducing Helix AI: Next-Gen Automation",
-    description: "Experience unprecedented automation capabilities powered by advanced machine learning and AI.",
-    image: "gradient-2",
+    title: "SMARTFLOW integration with OUTLOOK",
+    description:
+      "SMARTFLOW integration with OUTLOOK will enable users to manage and track workflows via their email client & trigger workflows based on email events.",
+    image: news2Img,
     link: "#",
   },
   {
-    category: "Customer Success",
+    category: "LLM Integration",
     categoryColor: "purple",
-    title: "Fortune 100 Company Achieves 85% Cost Reduction",
-    description: "Learn how one of the world's largest enterprises transformed their IT operations.",
-    image: "gradient-3",
+    title: "SMARTFLOW integration with LLM",
+    description:
+      "SMARTFLOW integration with LLM will empower users to leverage large language models for querring about use case & API's, natural language processing, and intelligent decision-making.",
+    image: news3Img,
     link: "#",
   },
 ];
@@ -63,16 +69,17 @@ const NewsGrid = () => {
               Latest <span className="gradient-text">News</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl">
-              Stay updated with the latest innovations, customer stories, and industry insights
+              Stay updated with the latest innovations, customer stories, and
+              industry insights
             </p>
           </div>
-          <a
+          {/* <a
             href="#"
             className="mt-4 md:mt-0 inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors"
           >
             View all news
             <ArrowRight className="w-4 h-4 ml-1" />
-          </a>
+          </a> */}
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -83,26 +90,35 @@ const NewsGrid = () => {
               className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5"
             >
               {/* Image */}
-              <div className={`aspect-video ${getGradient(item.image)} relative overflow-hidden`}>
-                <div 
+              <div
+                className="aspect-video relative overflow-hidden bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${item.image})`,
+                }}
+              >
+                {/* <div
                   className="absolute inset-0 opacity-30"
                   style={{
                     backgroundImage: `linear-gradient(hsl(var(--border)) 1px, transparent 1px),
                                      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px)`,
-                    backgroundSize: '20px 20px'
+                    backgroundSize: "20px 20px",
                   }}
-                />
+                /> */}
               </div>
 
               {/* Content */}
               <div className="p-6">
-                <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-4 ${getCategoryColor(item.categoryColor)}`}>
+                <span
+                  className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-4 ${getCategoryColor(
+                    item.categoryColor,
+                  )}`}
+                >
                   {item.category}
                 </span>
                 <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground text-sm line-clamp-2">
+                <p className="text-muted-foreground text-sm line-clamp-8">
                   {item.description}
                 </p>
                 <div className="mt-4 flex items-center text-primary font-medium text-sm">

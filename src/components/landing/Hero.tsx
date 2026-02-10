@@ -1,35 +1,45 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, TrendingUp, Clock, Users, Zap, ChevronDown, MousePointer } from "lucide-react";
+import {
+  ArrowRight,
+  TrendingUp,
+  Clock,
+  Users,
+  Zap,
+  ChevronDown,
+  MousePointer,
+} from "lucide-react";
+import smartflowLogo from "../../assets/smartflow.png";
 import { useEffect, useRef } from "react";
 
 const transformations = [
-  { 
-    company: "Global Retail Corp", 
-    metric: "40%", 
+  {
+    company: "Global Retail Corp",
+    metric: "40%",
     label: "Faster Order Processing",
     icon: Clock,
-    description: "Reduced manual workflows by automating end-to-end fulfillment"
+    description:
+      "Reduced manual workflows by automating end-to-end fulfillment",
   },
-  { 
-    company: "FinServe Holdings", 
-    metric: "3x", 
+  {
+    company: "FinServe Holdings",
+    metric: "3x",
     label: "Productivity Increase",
     icon: TrendingUp,
-    description: "Streamlined compliance reporting with intelligent automation"
+    description: "Streamlined compliance reporting with intelligent automation",
   },
-  { 
-    company: "HealthFirst Systems", 
-    metric: "60%", 
+  {
+    company: "HealthFirst Systems",
+    metric: "60%",
     label: "Cost Reduction",
     icon: Zap,
-    description: "Eliminated redundant processes across 50+ departments"
+    description: "Eliminated redundant processes across 50+ departments",
   },
-  { 
-    company: "TechVentures Inc", 
-    metric: "10K+", 
+  {
+    company: "TechVentures Inc",
+    metric: "10K+",
     label: "Hours Saved Monthly",
     icon: Users,
-    description: "Automated customer onboarding and support workflows"
+    description: "Automated customer onboarding and support workflows",
   },
 ];
 
@@ -90,12 +100,18 @@ const Hero = () => {
           particle.x,
           particle.y,
           particle.x + particle.length,
-          particle.y
+          particle.y,
         );
         gradient.addColorStop(0, `rgba(255, 100, 50, 0)`);
         gradient.addColorStop(0.3, `rgba(255, 120, 80, ${particle.opacity})`);
-        gradient.addColorStop(0.6, `rgba(200, 100, 150, ${particle.opacity * 0.7})`);
-        gradient.addColorStop(1, `rgba(100, 80, 180, ${particle.opacity * 0.3})`);
+        gradient.addColorStop(
+          0.6,
+          `rgba(200, 100, 150, ${particle.opacity * 0.7})`,
+        );
+        gradient.addColorStop(
+          1,
+          `rgba(100, 80, 180, ${particle.opacity * 0.3})`,
+        );
 
         ctx.strokeStyle = gradient;
         ctx.lineWidth = 1.5 + Math.random() * 0.5;
@@ -132,7 +148,10 @@ const Hero = () => {
         <canvas
           ref={canvasRef}
           className="absolute inset-0 z-0 w-full h-full"
-          style={{ background: "linear-gradient(135deg, hsl(220 30% 12%) 0%, hsl(240 25% 8%) 50%, hsl(220 30% 15%) 100%)" }}
+          style={{
+            background:
+              "linear-gradient(135deg, hsl(220 30% 12%) 0%, hsl(240 25% 8%) 50%, hsl(220 30% 15%) 100%)",
+          }}
         />
 
         {/* Gradient overlay */}
@@ -144,24 +163,28 @@ const Hero = () => {
             <div className="max-w-3xl mx-auto text-center">
               {/* Smartflow Logo */}
               <div className="flex items-center justify-center gap-2 mb-6">
-                <div className="w-12 h-12 rounded-xl gradient-border flex items-center justify-center">
-                  <span className="text-background font-bold text-2xl">S</span>
+                <div className="w-40 h-16 rounded flex items-center justify-center">
+                  <img src={smartflowLogo} alt="Smartflow Logo" />
                 </div>
               </div>
 
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-foreground">
+              <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-6 leading-tight text-foreground">
                 A Intelligent workflow for the
                 <br />
                 Modern Enterprise
               </h1>
-              
+
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Break down barriers with enterprise workflow management that enables seamless collaboration across domains and accelerates delivery
+                Break down barriers with enterprise workflow management that
+                enables seamless collaboration across domains and accelerates
+                delivery
               </p>
 
               {/* Scroll Indicator */}
               <div className="flex flex-col items-center gap-2 animate-bounce mt-4">
-                <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Scroll to explore</span>
+                <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  Scroll to explore
+                </span>
                 <ChevronDown className="w-5 h-5 text-muted-foreground" />
               </div>
             </div>
@@ -174,17 +197,20 @@ const Hero = () => {
         {/* Ambient glow effects */}
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-64 bg-primary/10 blur-[120px] rounded-full" />
         <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-64 bg-teal/10 blur-[120px] rounded-full" />
-        
+
         {/* Header */}
         <div className="text-center mb-10 relative z-10 px-4">
-          <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground mb-3">Real Results. Real Impact.</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground mb-3">
+            Real Results. Real Impact.
+          </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
             <span className="text-foreground">Business </span>
             <span className="gradient-text">Transformation</span>
             <span className="text-foreground"> in Action</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            See how enterprises achieve breakthrough results with our Managed Workflow services
+            See how enterprises achieve breakthrough results with our Managed
+            Workflow services
           </p>
         </div>
 
@@ -201,24 +227,30 @@ const Hero = () => {
                              hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2"
                 >
                   {/* Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-teal/20 
+                  <div
+                    className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-teal/20 
                                   flex items-center justify-center mb-4
                                   group-hover:from-primary/40 group-hover:to-teal/40 transition-all duration-300
-                                  border border-primary/20 group-hover:border-primary/40">
+                                  border border-primary/20 group-hover:border-primary/40"
+                  >
                     <IconComponent className="w-6 h-6 text-primary" />
                   </div>
-                  
+
                   {/* Metric */}
                   <div className="mb-3">
-                    <span className="text-4xl md:text-5xl font-bold gradient-text">{item.metric}</span>
-                    <p className="text-sm text-primary/80 font-medium mt-1">{item.label}</p>
+                    <span className="text-4xl md:text-5xl font-bold gradient-text">
+                      {item.metric}
+                    </span>
+                    <p className="text-sm text-primary/80 font-medium mt-1">
+                      {item.label}
+                    </p>
                   </div>
-                  
+
                   {/* Description */}
                   <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                     {item.description}
                   </p>
-                  
+
                   {/* Company */}
                   <p className="text-xs text-foreground/60 font-medium uppercase tracking-wider">
                     {item.company}
@@ -247,9 +279,9 @@ const Hero = () => {
         <div className="relative flex items-center overflow-hidden h-12">
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
-          
+
           <div className="flex animate-scroll">
-            {[...Array(2)].flatMap(() => 
+            {[...Array(2)].flatMap(() =>
               [
                 "Asset Management",
                 "Corporate Banking",
@@ -268,13 +300,15 @@ const Hero = () => {
                   key={`${partner}-${index}`}
                   className="flex-shrink-0 mx-10 group"
                 >
-                  <span className="text-lg font-light tracking-wide text-foreground/40 
+                  <span
+                    className="text-lg font-light tracking-wide text-foreground/40 
                                    hover:text-foreground/90 transition-all duration-500 cursor-default
-                                   whitespace-nowrap">
+                                   whitespace-nowrap"
+                  >
                     {partner}
                   </span>
                 </div>
-              ))
+              )),
             )}
           </div>
         </div>

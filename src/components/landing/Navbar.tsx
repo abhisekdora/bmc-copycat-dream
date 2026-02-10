@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import smartflowLogo from "../../assets/smartflow.png";
 
 const navItems = [
   { name: "About", href: "/about" },
   { name: "Team", href: "/teams" },
-  { name: "Support", href: "#" },
+  { name: "Onboarding", href: "#" },
 ];
 
 const Navbar = () => {
@@ -22,26 +23,34 @@ const Navbar = () => {
               {/* JPMC Logo */}
               <div className="flex items-center gap-1.5">
                 <div className="w-8 h-8 rounded bg-foreground flex items-center justify-center">
-                  <span className="text-background font-bold text-xs leading-none">JPM</span>
+                  <span className="text-background font-bold text-xs leading-none">
+                    JPM
+                  </span>
                 </div>
                 <div className="hidden sm:flex flex-col leading-none">
-                  <span className="text-[10px] font-semibold text-foreground/90 tracking-wide">JPMORGAN</span>
-                  <span className="text-[10px] font-medium text-foreground/60 tracking-wide">CHASE & CO.</span>
+                  <span className="text-[10px] font-semibold text-foreground/90 tracking-wide">
+                    JPMORGAN
+                  </span>
+                  <span className="text-[10px] font-medium text-foreground/60 tracking-wide">
+                    CHASE & CO.
+                  </span>
                 </div>
               </div>
               <div className="w-px h-6 bg-border/50" />
               {/* Smartflow Brand */}
               <div className="flex items-center gap-1.5">
-                <div className="w-7 h-7 rounded gradient-border flex items-center justify-center">
-                  <span className="text-background font-bold text-sm">S</span>
-                </div>
-                <span className="text-lg font-bold text-foreground">SMARTFLOW</span>
+                {/* <div className="w-7 h-7 rounded flex items-center justify-center">
+                  <img src={smartflowLogo} alt="Smartflow Logo" />
+                </div> */}
+                <span className="text-lg font-bold text-foreground">
+                  SMARTFLOW
+                </span>
               </div>
             </Link>
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-1">
-              {navItems.map((item) => (
+              {navItems.map((item) =>
                 item.href.startsWith("/") ? (
                   <Link
                     key={item.name}
@@ -58,17 +67,23 @@ const Navbar = () => {
                   >
                     {item.name}
                   </a>
-                )
-              ))}
+                ),
+              )}
             </div>
 
             {/* Right Actions */}
             <div className="hidden lg:flex items-center gap-4">
-              <a href="#" className="text-sm text-foreground/80 hover:text-foreground transition-colors">
-                Free Trials
+              <a
+                href="#"
+                className="text-sm text-foreground/80 hover:text-foreground transition-colors"
+              >
+                {/* Free Trials */}
               </a>
-              <a href="#" className="text-sm text-foreground/80 hover:text-foreground transition-colors">
-                Onboarding
+              <a
+                href="#"
+                className="text-sm text-foreground/80 hover:text-foreground transition-colors"
+              >
+                {/* Onboarding */}
               </a>
             </div>
 
@@ -77,7 +92,11 @@ const Navbar = () => {
               className="lg:hidden p-2 text-foreground"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -86,7 +105,7 @@ const Navbar = () => {
         {mobileMenuOpen && (
           <div className="lg:hidden bg-background border-t border-border">
             <div className="container mx-auto px-4 py-4 space-y-2">
-              {navItems.map((item) => (
+              {navItems.map((item) =>
                 item.href.startsWith("/") ? (
                   <Link
                     key={item.name}
@@ -104,11 +123,15 @@ const Navbar = () => {
                   >
                     {item.name}
                   </a>
-                )
-              ))}
+                ),
+              )}
               <div className="pt-4 border-t border-border space-y-2">
-                <a href="#" className="block px-4 py-2 text-foreground/80">Free Trials</a>
-                <a href="#" className="block px-4 py-2 text-foreground/80">Onboarding</a>
+                <a href="#" className="block px-4 py-2 text-foreground/80">
+                  Free Trials
+                </a>
+                <a href="#" className="block px-4 py-2 text-foreground/80">
+                  Onboarding
+                </a>
               </div>
             </div>
           </div>
