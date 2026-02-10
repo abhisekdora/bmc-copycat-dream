@@ -18,11 +18,25 @@ const Navbar = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg gradient-border flex items-center justify-center">
-                <span className="text-background font-bold text-xl">S</span>
+            <Link to="/" className="flex items-center gap-3">
+              {/* JPMC Logo */}
+              <div className="flex items-center gap-1.5">
+                <div className="w-8 h-8 rounded bg-foreground flex items-center justify-center">
+                  <span className="text-background font-bold text-xs leading-none">JPM</span>
+                </div>
+                <div className="hidden sm:flex flex-col leading-none">
+                  <span className="text-[10px] font-semibold text-foreground/90 tracking-wide">JPMORGAN</span>
+                  <span className="text-[10px] font-medium text-foreground/60 tracking-wide">CHASE & CO.</span>
+                </div>
               </div>
-              <span className="text-xl font-bold text-foreground">SMARTFLOW</span>
+              <div className="w-px h-6 bg-border/50" />
+              {/* Smartflow Brand */}
+              <div className="flex items-center gap-1.5">
+                <div className="w-7 h-7 rounded gradient-border flex items-center justify-center">
+                  <span className="text-background font-bold text-sm">S</span>
+                </div>
+                <span className="text-lg font-bold text-foreground">SMARTFLOW</span>
+              </div>
             </Link>
 
             {/* Desktop Nav */}
