@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, TrendingUp, Clock, Users, Zap } from "lucide-react";
+import { ArrowRight, TrendingUp, Clock, Users, Zap, ChevronDown, MousePointer } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 const transformations = [
@@ -59,7 +59,6 @@ const Hero = () => {
 
     const createParticle = (fullRandom = true) => {
       if (fullRandom) {
-        // Distribute across entire canvas
         return {
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -68,7 +67,6 @@ const Hero = () => {
           opacity: 0.05 + Math.random() * 0.25,
         };
       }
-      // Reset particle to start from left edge
       return {
         x: -Math.random() * 200,
         y: Math.random() * canvas.height,
@@ -84,12 +82,10 @@ const Hero = () => {
     };
 
     const animate = () => {
-      // Dark background with slight trail effect
       ctx.fillStyle = "rgba(14, 20, 40, 0.15)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((particle, index) => {
-        // Horizontal gradient for left-to-right motion
         const gradient = ctx.createLinearGradient(
           particle.x,
           particle.y,
@@ -108,10 +104,8 @@ const Hero = () => {
         ctx.lineTo(particle.x + particle.length, particle.y);
         ctx.stroke();
 
-        // Move particle horizontally (left to right)
         particle.x += particle.speed;
 
-        // Reset if off screen - spawn from left edge
         if (particle.x > canvas.width + particle.length) {
           particles[index] = createParticle(false);
         }
@@ -132,22 +126,29 @@ const Hero = () => {
 
   return (
     <>
-      {/* Combined Hero Section - Full viewport with 70/30 split */}
-      <section className="relative h-screen flex flex-col overflow-hidden">
-        {/* Animated Speed Lines Canvas - covers entire section */}
+      {/* Hero Section - 60vh animated area */}
+      <section className="relative h-[60vh] flex flex-col overflow-hidden">
+        {/* Animated Speed Lines Canvas */}
         <canvas
           ref={canvasRef}
           className="absolute inset-0 z-0 w-full h-full"
           style={{ background: "linear-gradient(135deg, hsl(220 30% 12%) 0%, hsl(240 25% 8%) 50%, hsl(220 30% 15%) 100%)" }}
         />
 
-        {/* Gradient overlay for depth */}
+        {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 pointer-events-none z-[1]" />
 
-        {/* Hero Content - 70% */}
-        <div className="relative z-10 flex-[7] flex items-center justify-center pt-16">
+        {/* Hero Content */}
+        <div className="relative z-10 flex-1 flex items-center justify-center pt-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
+              {/* Smartflow Logo */}
+              <div className="flex items-center justify-center gap-2 mb-6">
+                <div className="w-12 h-12 rounded-xl gradient-border flex items-center justify-center">
+                  <span className="text-background font-bold text-2xl">S</span>
+                </div>
+              </div>
+
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-foreground">
                 A Intelligent workflow for the
                 <br />
@@ -158,63 +159,11 @@ const Hero = () => {
                 Break down barriers with enterprise workflow management that enables seamless collaboration across domains and accelerates delivery
               </p>
 
-              <Button 
-                variant="outline"
-                size="lg" 
-                className="text-lg px-8 py-6 border-foreground/50 hover:bg-foreground hover:text-background"
-              >
-                Contact us
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Trusted Partners - 30% */}
-        <div className="relative z-10 flex-[3] flex flex-col justify-center bg-gradient-to-t from-background via-background to-background/60 border-t border-border/20">
-          <div className="container mx-auto px-4 mb-6">
-            <div className="text-center">
-              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">
-                Trusted by various of Line of Business
-              </p>
-              <h2 className="text-xl md:text-2xl font-semibold text-foreground">
-                Powering the JPMorganChase leading enterprises
-              </h2>
-            </div>
-          </div>
-
-          {/* Minimal Logo Carousel */}
-          <div className="relative flex-1 flex items-center overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
-            
-            <div className="flex animate-scroll">
-              {[...Array(2)].flatMap(() => 
-                [
-                  "Asset Management",
-                  "Corporate Banking",
-                  "Investment Banking",
-                  "Commercial Banking",
-                  "Wealth Management",
-                  "Risk Management",
-                  "Treasury Services",
-                  "Private Banking",
-                  "Securities Services",
-                  "Digital Platforms",
-                  "Global Markets",
-                  "Research",
-                ].map((partner, index) => (
-                  <div
-                    key={`${partner}-${index}`}
-                    className="flex-shrink-0 mx-10 group"
-                  >
-                    <span className="text-lg font-light tracking-wide text-foreground/40 
-                                     hover:text-foreground/90 transition-all duration-500 cursor-default
-                                     whitespace-nowrap">
-                      {partner}
-                    </span>
-                  </div>
-                ))
-              )}
+              {/* Scroll Indicator */}
+              <div className="flex flex-col items-center gap-2 animate-bounce mt-4">
+                <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Scroll to explore</span>
+                <ChevronDown className="w-5 h-5 text-muted-foreground" />
+              </div>
             </div>
           </div>
         </div>
@@ -277,6 +226,56 @@ const Hero = () => {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted Partners Section */}
+      <section className="relative py-10 bg-gradient-to-b from-background via-secondary/30 to-background border-t border-border/20">
+        <div className="container mx-auto px-4 mb-6">
+          <div className="text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">
+              Trusted by various of Line of Business
+            </p>
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground">
+              Powering the JPMorganChase leading enterprises
+            </h2>
+          </div>
+        </div>
+
+        {/* Minimal Logo Carousel */}
+        <div className="relative flex items-center overflow-hidden h-12">
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+          
+          <div className="flex animate-scroll">
+            {[...Array(2)].flatMap(() => 
+              [
+                "Asset Management",
+                "Corporate Banking",
+                "Investment Banking",
+                "Commercial Banking",
+                "Wealth Management",
+                "Risk Management",
+                "Treasury Services",
+                "Private Banking",
+                "Securities Services",
+                "Digital Platforms",
+                "Global Markets",
+                "Research",
+              ].map((partner, index) => (
+                <div
+                  key={`${partner}-${index}`}
+                  className="flex-shrink-0 mx-10 group"
+                >
+                  <span className="text-lg font-light tracking-wide text-foreground/40 
+                                   hover:text-foreground/90 transition-all duration-500 cursor-default
+                                   whitespace-nowrap">
+                    {partner}
+                  </span>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </section>
