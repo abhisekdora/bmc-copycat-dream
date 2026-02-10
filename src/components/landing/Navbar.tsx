@@ -17,10 +17,9 @@ const Navbar = () => {
       {/* Main Nav */}
       <nav className="bg-background/95 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
+          <div className="relative flex items-center h-16">
+            {/* Logo - left */}
             <Link to="/" className="flex items-center gap-3">
-              {/* JPMC Logo */}
               <div className="flex items-center gap-1.5">
                 <div className="w-8 h-8 rounded bg-foreground flex items-center justify-center">
                   <span className="text-background font-bold text-xs leading-none">
@@ -37,25 +36,19 @@ const Navbar = () => {
                 </div>
               </div>
               <div className="w-px h-6 bg-border/50" />
-              {/* Smartflow Brand */}
-              <div className="flex items-center gap-1.5">
-                {/* <div className="w-7 h-7 rounded flex items-center justify-center">
-                  <img src={smartflowLogo} alt="Smartflow Logo" />
-                </div> */}
-                <span className="text-lg font-bold text-foreground">
-                  SMARTFLOW
-                </span>
-              </div>
+              <span className="text-lg font-bold text-foreground">
+                SMARTFLOW
+              </span>
             </Link>
 
-            {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-1">
+            {/* Desktop Nav - absolute center */}
+            <div className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
               {navItems.map((item) =>
                 item.href.startsWith("/") ? (
                   <Link
                     key={item.name}
                     to={item.href}
-                    className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+                    className="px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -63,7 +56,7 @@ const Navbar = () => {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+                    className="px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
                   >
                     {item.name}
                   </a>
@@ -71,25 +64,9 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Right Actions */}
-            <div className="hidden lg:flex items-center gap-4">
-              <a
-                href="#"
-                className="text-sm text-foreground/80 hover:text-foreground transition-colors"
-              >
-                {/* Free Trials */}
-              </a>
-              <a
-                href="#"
-                className="text-sm text-foreground/80 hover:text-foreground transition-colors"
-              >
-                {/* Onboarding */}
-              </a>
-            </div>
-
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - right */}
             <button
-              className="lg:hidden p-2 text-foreground"
+              className="lg:hidden p-2 text-foreground ml-auto"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? (
