@@ -1,7 +1,7 @@
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import { ArrowRight, Zap, Shield, Globe, Users, Database, Server, Monitor, Search, Lock, BarChart3, Cloud } from "lucide-react";
-import smartflowArchitecture from "@/assets/smartflow-architecture.jpeg";
+import ArchitectureDiagram from "@/components/landing/ArchitectureDiagram";
 
 const architectureComponents = [
   {
@@ -89,13 +89,9 @@ const About = () => {
             </p>
           </div>
           
-          {/* Architecture Diagram */}
-          <div className="bg-white rounded-2xl p-4 md:p-8 shadow-xl border border-border/20 mb-12">
-            <img 
-              src={smartflowArchitecture} 
-              alt="RDT-SmartFlow Architecture Overview" 
-              className="w-full h-auto rounded-lg"
-            />
+          {/* Architecture Diagram - DOM based */}
+          <div className="bg-card rounded-2xl shadow-xl border border-border/20 mb-12 overflow-hidden">
+            <ArchitectureDiagram />
           </div>
 
           {/* Architecture Components Grid */}
