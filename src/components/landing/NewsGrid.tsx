@@ -1,37 +1,8 @@
 import { ArrowRight } from "lucide-react";
-import smartflowImg from "../../assets/SA.png";
-import news2Img from "../../assets/OL.png";
-import news3Img from "../../assets/LLM.png";
+import { Link } from "react-router-dom";
+import newsData from "@/data/news.json";
 
-const news = [
-  {
-    category: "External Integration",
-    categoryColor: "primary",
-    title: "SMARTFLOW integration with SMART APPROVAL",
-    description:
-      "SMARTAPPROVAL integration will allow users to approve workflows directly from their SMARTFLOW dashboard.",
-    image: smartflowImg,
-    link: "#",
-  },
-  {
-    category: "External Integration",
-    categoryColor: "accent",
-    title: "SMARTFLOW integration with OUTLOOK",
-    description:
-      "SMARTFLOW integration with OUTLOOK will enable users to manage and track workflows via their email client & trigger workflows based on email events.",
-    image: news2Img,
-    link: "#",
-  },
-  {
-    category: "LLM Integration",
-    categoryColor: "purple",
-    title: "SMARTFLOW integration with LLM",
-    description:
-      "SMARTFLOW integration with LLM will empower users to leverage large language models for querring about use case & API's, natural language processing, and intelligent decision-making.",
-    image: news3Img,
-    link: "#",
-  },
-];
+const news = newsData.slice(0, 3);
 
 const getGradient = (gradient: string) => {
   switch (gradient) {
@@ -84,9 +55,9 @@ const NewsGrid = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {news.map((item, index) => (
-            <a
+            <Link
               key={index}
-              href={item.link}
+              to={`/news/${item.id}`}
               className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5"
             >
               {/* Image */}
@@ -126,7 +97,7 @@ const NewsGrid = () => {
                   <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "smartflow-smart-approval",
+    "image": "/assets/SA.png",
+    "category": "External Integration",
+    "categoryColor": "primary",
+    "title": "SMARTFLOW integration with SMART APPROVAL",
+    "shortDescription": "Smart Approval",
+    "description": "SMARTAPPROVAL integration will allow users to approve workflows directly from their SMARTFLOW dashboard. This powerful integration bridges the gap between workflow orchestration and approval management, enabling seamless end-to-end process automation.\n\nWith this integration, users can:\n- View pending approvals directly within SMARTFLOW\n- Approve or reject workflow steps without switching applications\n- Track approval history and audit trails in real-time\n- Configure multi-level approval hierarchies\n- Set up automated escalation rules for pending approvals\n\nThis integration significantly reduces approval cycle times and eliminates the need for context switching between multiple applications, resulting in improved productivity and faster decision-making across the organization."
+  },
+  {
+    "id": "smartflow-outlook",
+    "image": "/assets/OL.png",
+    "category": "External Integration",
+    "categoryColor": "accent",
+    "title": "SMARTFLOW integration with OUTLOOK",
+    "shortDescription": "Outlook Integration",
+    "description": "SMARTFLOW integration with OUTLOOK will enable users to manage and track workflows via their email client and trigger workflows based on email events.\n\nKey capabilities include:\n- Trigger workflows automatically based on incoming emails\n- Receive workflow notifications and status updates directly in Outlook\n- Approve or reject workflow steps via email responses\n- Attach email content and attachments to workflow instances\n- Schedule workflow executions based on calendar events\n- Create workflow tasks from email threads\n\nThis integration leverages the Microsoft Graph API to provide a seamless experience, allowing teams to stay within their familiar email environment while benefiting from SMARTFLOW's powerful automation capabilities."
+  },
+  {
+    "id": "smartflow-llm",
+    "image": "/assets/LLM.png",
+    "category": "LLM Integration",
+    "categoryColor": "purple",
+    "title": "SMARTFLOW integration with LLM",
+    "shortDescription": "LLM Integration",
+    "description": "SMARTFLOW integration with LLM will empower users to leverage large language models for querying about use cases and APIs, natural language processing, and intelligent decision-making.\n\nThis groundbreaking integration enables:\n- Natural language queries to search and discover workflows\n- AI-powered workflow recommendations based on business context\n- Automated documentation generation for workflow processes\n- Intelligent routing and decision-making within workflow steps\n- Conversational interface for workflow creation and management\n- Smart error detection and resolution suggestions\n\nBy combining the power of large language models with SMARTFLOW's workflow engine, organizations can dramatically reduce the learning curve for new users and unlock advanced automation scenarios that were previously impossible with traditional rule-based approaches."
+  }
+]
