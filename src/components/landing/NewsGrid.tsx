@@ -89,8 +89,8 @@ const NewsGrid = () => {
                 <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground text-sm line-clamp-8">
-                  {item.description}
+                <p className="text-muted-foreground text-sm line-clamp-2">
+                  {item.shortDescription}
                 </p>
                 <div className="mt-4 flex items-center text-primary font-medium text-sm">
                   Read more
