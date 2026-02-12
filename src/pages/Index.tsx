@@ -6,6 +6,7 @@ import VideoSection from "@/components/landing/VideoSection";
 import TeamSection from "@/components/landing/TeamSection";
 import AwardsSection from "@/components/landing/AwardsSection";
 import NewsGrid from "@/components/landing/NewsGrid";
+import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import Footer from "@/components/landing/Footer";
 
 const Index = () => {
@@ -19,6 +20,7 @@ const Index = () => {
       <TeamSection />
       {/* <AwardsSection /> */}
       <NewsGrid />
+      <TestimonialsSection />
       <Footer />
     </div>
   );
